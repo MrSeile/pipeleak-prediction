@@ -12,7 +12,12 @@ cursor.execute(f"SELECT log_message FROM api_ws_sample.audit_log_data where fpro
 data = cursor.fetchall()
 data = [json.loads(d[0])['value'] for d in data]
 
+plt.figure(figsize=(9, 5), dpi=100)
+
 sns.distplot(data, kde=False)
-plt.ylabel("número de canonades", size=15)
+plt.ylabel("nombre de canonades", size=15)
 plt.xlabel("predicció de la xarxa neuronal", size=15)
+
+plt.tight_layout()
+
 plt.show()
